@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../UI_CSS_files/MainScene.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainSceneController"> 
+   <top>
+      <VBox prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox>
+               <children>
+                  <MenuBar>
+                    <menus>
+                      <Menu mnemonicParsing="false" text="Новая игра">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#newGameButIdClick" text="Новая игра" />
+                              <MenuItem mnemonicParsing="false" onAction="#saveGameClick" text="Сохранить игру" />
+                              <MenuItem mnemonicParsing="false" onAction="#loadGame" text="Загрузить игру" />
+                           </items></Menu>
+                      <Menu mnemonicParsing="false">
+                           <graphic>
+                              <Label onMouseClicked="#menuParamClick" text="Параметры" />
+                           </graphic>
+                      </Menu>
+                      <Menu mnemonicParsing="false">
+                           <graphic>
+                              <Label onMouseClicked="#statisticClick" text="Рекорды" />
+                           </graphic>
+                      </Menu>
+                        <Menu mnemonicParsing="false">
+                           <graphic>
+                              <Label onMouseClicked="#helpClickFromGameScene" text="Справка" />
+                           </graphic>
+                        </Menu>
+                        
+                    </menus>
+                  </MenuBar>
+               </children>
+            </HBox>
+            <HBox prefHeight="26.0" prefWidth="600.0">
+               <children>
+                  <HBox prefHeight="30.0" prefWidth="97.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Resources/mina.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <HBox id="hboxMineCounterID" alignment="CENTER" minWidth="57.0" prefHeight="34.0" prefWidth="57.0">
+                           <effect>
+                              <InnerShadow>
+                                 <color>
+                                    <Color red="0.09190627187490463" green="0.07102826237678528" blue="0.6973684430122375" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="7.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label id="labelCounterMinesID" fx:id="labelCounterMinesFXID" textAlignment="CENTER" textFill="#0b0017">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets top="5.0" />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></HBox>
+                  <HBox prefHeight="34.0" prefWidth="1000.0" />
+                  <HBox prefHeight="30.0" prefWidth="97.0">
+                     <children>
+                        <HBox id="hboxMineCounterID" alignment="CENTER" minWidth="70.0" prefHeight="30.0" prefWidth="72.0">
+                           <effect>
+                              <InnerShadow>
+                                 <color>
+                                    <Color red="0.09190627187490463" green="0.07102826237678528" blue="0.6973684430122375" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label id="labelCounterMinesID" fx:id="timerLabelFXID" textAlignment="CENTER" textFill="#0b0017">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <ImageView fitHeight="28.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Resources/time.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="7.0" right="20.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <opaqueInsets>
+                        <Insets top="5.0" />
+                     </opaqueInsets>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <HBox alignment="TOP_CENTER" maxHeight="53.0" prefHeight="53.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="93.0" prefWidth="193.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#backButClick" text="НАЗАД" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="50.0" prefHeight="24.0" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#newGameButIdClick" text="НОВАЯ ИГРА" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
+               <children>
+                  <Button id="exitId" mnemonicParsing="false" onAction="#btnClose_Click2" text="ВЫЙТИ" />
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" top="10.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <center>
+      <GridPane prefHeight="348.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+   </center>
+</BorderPane>
