@@ -1,0 +1,52 @@
+2) Для создания дистрибьютива можно воспользоваться утилитой jlink.exe (расположена в C:\Java\jdk-18.0.2\bin)
+	 Предварительно в каталоге C:\book создаем каталог jlink, в который будем сохранять файлы.
+	 В командной строке вводим команду (из любой директории, в одну строку)
+	 jlink --no-header-files --no-man-pages --compress=2 --strip-debug 
+	 --module-path C:\Java\JavaFX\14.0.2.1\javafx-jmods-18.0.2 
+	 --add-modules java.base,javafx.controls,javafx.graphics 
+	 --output C:\book\jlink\jrefx1
+	 	где --no-header-files - не добавлять заголовочные файлы
+	 		--no-man-pages - не добавлять файлы со справочной информацией
+	 		--compress=2 - степень сжатия
+	 		--strip-debug - удалить отладочную информацию
+	 		--module-path - путь поиска модулей. ОБРАТИТЕ внимание, что обращение идет к файлам jmods, а не к модулям JAVAFX
+	 		--output - путь к каталогу в который будут сохранены все файлы и модули
+	 Для просмотра списка всех модулей, загруженных в каталог C:\book\jlink\jrefx1 набираем в командной строке (из любой директории)
+	 	C:\book\jlink\jrefx1\bin\java --list-modules
+	 Для запуска приложения из дистрибьютива набираем в командной строке	
+	 	C:\book\jlink\jrefx1\bin\java -jar TestJavaFX.jar
+	 	
+	3)  Создание exe файла, при щелчке на котором запустим виртуальную машину Java из дистрибутива и передадим ей путь к Jar-архиву
+	При этом сделаем так, чтобы черное окно не отображалось.
+	Предварительно внутри каталога с дистрибутивом создаем каталог jar и копируем в него файл TestJavaFX.jar  (в C:\book\jlink\jrefx1\jar)
+	Для создания exe файла нам потребуется библиотека MinGW-W64.
+	Для загрузки библиотеки переходим на страницу https://sourceforge.net/projects/mingw-w64/files/ и 
+	скачиваем файл mingw-w64-install.exe для онлайн загрузки, устанавливаем в C:\Java\MinGWCompiler
+	Для проверки работоспособности установленного приложения набираем set Path=C:\Java\MinGWCompiler\mingw32\bin;%Path%   - ничего не выдает
+	Проверяем версию C:\book>gcc --version
+	Выдаст
+		gcc (i686-posix-dwarf-rev0, Built by MinGW-W64 project) 8.1.0
+		Copyright (C) 2018 Free Software Foundation, Inc.
+		This is free software; see the source for copying conditions.  There is NO
+		warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+	Чтобы exe-ярлык содержал значок
+		- в каталог С:\book добавляем файл со значком, например, my_ico.ico
+		- создаем текстовый файл с названием resources.rc и вставляем в него 001 ICON "my_ico.ico"
+		- компилируем файл ресурсов с помощью программы windres.exe через команду (из директории С:\book) 
+			windres --use-temp-file -iresources.rc -oresources.o
+			В результате будет создан файл resources.o
+		- чтобы передать файл resources.o компилятору при сборке программы нужно создать файл runjar.c с текстом ниже
+			#include <stdio.h>
+			#include <process.h>
+			
+			int main (int argc, char *argv[], char **penv) {
+				_execl("bin\\javaw.exe", "bin\\javaw.exe", "-jar", "jar\\TestJavaFX.jar", NULL);
+			return 0;
+			}
+	   - теперь можно создать exe-файл, выполнив команду
+	   		gcc -Wall -O3 -mwindows -o C:\book\jlink\jrefx1\MyApp.exe runjar.c resources.o
+	   	После компиляции будет создан в каталоге C:\book\jlink\jrefx1 файл MyApp.exe. 
+	   	При двойном щелчке мыши запустится приложение  TestJavaFX.jar
+	   	В этом виде дистрибутив можно передать пользователю и ему не понадобится дополнительно устанавливать JDK и библиотеку JavaFX.
+	   	Чтобы сжать можно зарархивировать файл
+	

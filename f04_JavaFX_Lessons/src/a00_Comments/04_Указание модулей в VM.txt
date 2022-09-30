@@ -1,0 +1,6 @@
+
+/* 			УКАЗАНИЕ МОДУЛЕЙ В RUN CONFIGURATION
+   В настройках запуска нужно прописать модули, которые необходимы для работы приложения
+   При указании нескольких модулей нужно прописывать их через запятую  javafx.controls,javafx.fxml
+   Также можно указать значения ALL-DEFAULT или ALL-SYSTEM или ALL-MODULE-PATH
+   	В  Run configurations - (x)-Arguments - VM arguments прописываем --add-modules=javafx.controls,javafx.fxml,javafx.web  */

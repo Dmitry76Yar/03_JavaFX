@@ -1,0 +1,53 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#My_Label {
+	-fx-text-fill: FIREBRICK;
+	-fx-font-size: 20px;
+	-fx-fill: FIREBRICK;
+ 	-fx-font-weight: bold;
+}
+
+.labelStyleClass {
+	-fx-text-fill: BLUE;
+	-fx-font-size: 20px;
+	-fx-fill: BLUE;
+ 	-fx-font-weight: bold;
+}
+
+Label {
+    -fx-font-weight: bold;
+    -fx-font-size: 27px;
+    -fx-text-fill: GREEN;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+
+.scene{
+	-fx-font-weight: bold;
+	-fx-text-fill: #133233;
+}
+
+#VisitedButton:hover{
+	 -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#FocusedButton:armed{
+	 -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#HYPERL1:visited {
+	-fx-text-fill: RED;
+}
+
+#HYPERL2:pressed {
+	-fx-text-fill: YELLOW;
+}
+
+#btn3Id:disabled {
+	-fx-text-fill: white;
+	-fx-background-color: black;
+}
+
+Button:cancel {
+	-fx-background-color: green;
+}
